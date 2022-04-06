@@ -2,7 +2,7 @@
 function to get server id and rabbit stream links
 '''
 
-from statistics import quantiles
+
 import requests
 from bs4 import BeautifulSoup
 from .capctha import *
@@ -37,7 +37,8 @@ def get_final_links(link):
     '''
     function to get final links
     '''
-    
+    languages = []
+    subtitles = []
     qualities = []
     links = []
     
@@ -65,10 +66,17 @@ def get_final_links(link):
     
     x = req.get(f"https://rabbitstream.net/ajax/embed-4/getSources?id={rabbit_id}&_token={token}&_number={times}",headers={'user-agent':useragent,'X-Requested-With': 'XMLHttpRequest'}).json()
     
-    
+    '''
+    subtitle part
+    '''
+    languages = [x["tracks"][i]["label"] for i in range(len(x["tracks"]))]        
+    subtitles = [x["tracks"][i]["file"] for i in range(len(x["tracks"]))]
+    '''
+    final link part
+    '''
     final_link = x["sources"][0]["file"]
     
     qualities,links = get_m3u8_quality(final_link)
     
-    return  qualities,links
+    return  languages,subtitles,qualities,links
 
