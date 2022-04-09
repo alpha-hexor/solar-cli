@@ -1,11 +1,11 @@
 **A python tool to watch movies and series from cli with multi-quality and subtitle support**
 ***
 ## Preview
-<figure class="video_container">
-  <video controls="true" allowfullscreen="true">
+
+<video controls="true" allowfullscreen="true">
     <source src="movie.mp4" type="video/mp4">
-  </video>
-</figure>
+</video>
+
 
 ## Requirements
 ``1. python3``
