@@ -32,6 +32,24 @@ def get_sid_link(ismovie,id):
             sid = str(x.find("a")["data-linkid"])
             r = requests.get(f"https://solarmovie.pe/ajax/get_link/{sid}",headers=headers)
             return r.json()["link"]
+    
+    else:
+        
+        #for series
+        url = f"https://solarmovie.pe/ajax/v2/episode/servers/{id}/#servers-list"
+        
+        r=requests.get(url,headers=headers)
+        
+        if r.status_code == 200:
+            '''
+            pick up the first server id
+            '''
+            soup = BeautifulSoup(r.text,'html.parser')
+            sid = [i['data-id'] for i in soup.select('.link-item')][0]
+            
+            #generate rabbit link
+            r = requests.get(f"https://solarmovie.pe/ajax/get_link/{sid}",headers=headers)
+            return r.json()["link"]
 
 def get_final_links(link):
     '''
