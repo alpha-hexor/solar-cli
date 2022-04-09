@@ -9,8 +9,14 @@
 
 ## Requirements
 ``1. python3``
+
+
 ``2. mpv [for streaming]``
+
+
 ``3. ffmpeg [for downloading]``
+
+
 
 ***
 ## Usage
