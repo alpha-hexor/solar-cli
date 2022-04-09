@@ -2,9 +2,7 @@
 ***
 ## Preview
 
-<video controls="true" allowfullscreen="true">
-    <source src="movie.mp4" type="video/mp4">
-</video>
+<iframe src="movie.mp4" frameborder="0" allowfullscreen="true"> </iframe>
 
 
 ## Requirements
